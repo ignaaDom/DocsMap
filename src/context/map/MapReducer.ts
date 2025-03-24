@@ -3,8 +3,9 @@ import { MapState } from "./MapProvider";
 
 type MapAction = 
 | { type: 'setMap', payLoad: Map }
-| { type: 'setMarkers', payLoad: Marker[] };
-
+| { type: 'setMarkers', payLoad: Marker[] }
+| { type: 'setKms', payLoad: number}
+| { type: 'setMinutes', payLoad: number}
 
 export const MapReducer = ( state: MapState, action: MapAction): MapState =>{
     switch ( action.type ) {
@@ -19,6 +20,16 @@ export const MapReducer = ( state: MapState, action: MapAction): MapState =>{
             return{
                 ...state,
                 markers: action.payLoad
+            }
+        case 'setKms':
+            return{
+                ...state,
+                kms: action.payLoad
+            }
+        case 'setMinutes':
+            return{
+                ...state,
+                minutes: action.payLoad
             }
         default:
             return state;

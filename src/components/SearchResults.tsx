@@ -26,7 +26,7 @@ export const SearchResults = () => {
         if( !userLocation ) return;
         const [ lng, lat ] = place.center;
 
-        getRouteBetweenPoints(userLocation, [ lng, lat]);
+        getRouteBetweenPoints(userLocation,[ lng, lat]);
     }
 
     if (isLoadingPlaces) {
@@ -54,7 +54,7 @@ export const SearchResults = () => {
                                 onClick={() => getRoute( place )}
                                 className={`btn btn-sm ${ (activeId === place.id) ? 'btn-outline-light': 'btn-outline-dark'}`}
                             >
-                                Direcciones
+                                Generar Ruta
                             </button>
                         </li>
                     ))

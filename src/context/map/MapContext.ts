@@ -5,6 +5,8 @@ import { Map } from "mapbox-gl";
 interface MapContextProps {
     isMapReady: boolean,
     map?: Map,
+    kms?: number,
+    minutes?: number,
     
     // Methods
     setMap: (map: Map) => void,
