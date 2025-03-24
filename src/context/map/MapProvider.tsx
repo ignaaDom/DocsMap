@@ -14,7 +14,6 @@ export interface MapState {
     isMapReady: boolean,
     map?: Map;
     markers: Marker[];
-    // const { distance, duration, geometry} = resp.data.routes[0];
     kms: number,
     minutes: number
 }
@@ -35,7 +34,12 @@ export const MapProvider = ( { children }:Props ) => {
 
     const [ state , dispatch ] = useReducer(MapReducer,INITIAL_STATE);
 
-    const { places } = useContext( PlacesContext);
+    const { places, delate } = useContext( PlacesContext);
+
+    if(state.map?.getLayer('RouteString') && delate === true) {
+        state.map?.removeLayer('RouteString');
+        state.map?.removeSource('RouteString');
+    }
 
     useEffect(()=>{
         state.markers.forEach( marker => marker.remove());
@@ -130,9 +134,9 @@ export const MapProvider = ( { children }:Props ) => {
             }
         }
 
-        if( state.map?.getLayer('RouteString') ){
-            state.map.removeLayer('RouteString');
-            state.map.removeSource('RouteString');
+        if( state.map?.getLayer('RouteString')){
+            state.map?.removeLayer('RouteString');
+            state.map?.removeSource('RouteString');
         }
 
         state.map?.addSource('RouteString', sourceData);

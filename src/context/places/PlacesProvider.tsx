@@ -10,6 +10,7 @@ export interface PlacesState {
     userLocation?: [ number , number];
     isLoadingPlaces: boolean;
     places: Feature[];
+    delate: boolean;
 }
 
 const INITIAL_STATE: PlacesState = {
@@ -17,6 +18,7 @@ const INITIAL_STATE: PlacesState = {
     userLocation: undefined,
     isLoadingPlaces: false,
     places: [],
+    delate: false,
 }
 
 interface Props{
@@ -36,12 +38,14 @@ export const PlacesProvider = ({ children }:Props) => {
 
         if( query.length === 0){
             dispatch({ type:'setPlaces',payload: [] });
+            dispatch({ type:'setDelate',payload: true});
             return [];
         }
         
         if( !state.userLocation ) throw new Error('No se encontro la ubicacion inicial');
 
         dispatch({ type: 'setLoadingPaces' });
+        dispatch({ type:'setDelate',payload: false});
         
         const resp = await searchApi.get<PlacesResponce>(`/${ query }.json`,{
             params: {

@@ -1,5 +1,5 @@
 import { MapView, BtnMyLocation, FlorenciaLogo, SearchBar} from "../components"
-import { DistanciaMinutos } from '../components/DisntanciaMinutos';
+import { DistanceMinutes } from '../components/DistanceMinutes';
 
 export const HomeScreen = () => {
     return (
@@ -8,7 +8,7 @@ export const HomeScreen = () => {
             <BtnMyLocation></BtnMyLocation>
             <FlorenciaLogo></FlorenciaLogo>
             <SearchBar></SearchBar>
-            <DistanciaMinutos></DistanciaMinutos>
+            <DistanceMinutes></DistanceMinutes>
         </div>
     )
 }
